@@ -16,6 +16,7 @@ export PATH
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+alias ls='ls --color=auto' #Enable colors for ls
 #function ls(){
 #    if [ -r ./.hidden ];then
 #        command ls $@ | grep -Evf .hidden
