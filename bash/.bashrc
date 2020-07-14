@@ -16,11 +16,6 @@ export PATH
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-alias ls='ls --color=auto' #Enable colors for ls
-#function ls(){
-#    if [ -r ./.hidden ];then
-#        command ls $@ | grep -Evf .hidden
-#    else
-#        command ls $@ | cat
-#    fi
-#}
+alias ls='ls --color=auto'          # Enable colors for ls
+alais open='xdg-open'               # For when you want to open a file in a graphical application
+alias reload='source $HOME/.bashrc' # For an easier time sourcing this file
