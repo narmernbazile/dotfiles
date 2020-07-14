@@ -17,5 +17,5 @@ export PATH
 
 # User specific aliases and functions
 alias ls='ls --color=auto'          # Enable colors for ls
-alais open='xdg-open'               # For when you want to open a file in a graphical application
+alias open='xdg-open'               # For when you want to open a file in a graphical application
 alias reload='source $HOME/.bashrc' # For an easier time sourcing this file
