@@ -21,7 +21,7 @@ alias grep='grep --color=auto'
 alias ls='ls --color=auto'
 
 #Prompt
-PS1='\[\033[33m\]\W \[\033[32m\]>> \[\033[37m\]'
+export PS1='\[\033[33m\]\W \[\033[32m\]>> \[\033[37m\]'
 
 # User specific aliases and functions
 alias open='xdg-open'                  # For opening in a graphical application
