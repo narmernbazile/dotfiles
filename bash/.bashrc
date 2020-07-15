@@ -15,7 +15,15 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
+# Enable colorized output
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+
+#Prompt
+PS1='\[\033[33m\]\W \[\033[32m\]>> \[\033[37m\]'
+
 # User specific aliases and functions
-alias ls='ls --color=auto'          # Enable colors for ls
-alias open='xdg-open'               # For when you want to open a file in a graphical application
-alias reload='source $HOME/.bashrc' # For an easier time sourcing this file
+alias open='xdg-open'                  # For opening in a graphical application
+alias reload='source $HOME/.bashrc'    # For an easier time sourcing this file
+
