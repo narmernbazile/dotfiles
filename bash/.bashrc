@@ -41,14 +41,18 @@ __prompt_command() {
 	
 	local PROMPT_SYMBOL='¬'     # Place the symbol for your prompt here
 	
-	local COLOR_RED='\033[0;31m'
-	local COLOR_YELLOW='\033[0;33m'
-	local COLOR_GREEN='\033[0;32m'
-	local COLOR_OCHRE='\033[38;5;95m'
-	local COLOR_BLUE='\033[0;34m'
-	local COLOR_WHITE='\033[0;37m'
-	local COLOR_RESET='\033[0m'
+	# YAY COLORS!!!
+	local COLOR_BLACK="\[$(tput setaf 0)\]"
+	local COLOR_RED="\[$(tput setaf 1)\]"
+	local COLOR_GREEN="\[$(tput setaf 2)\]"
+	local COLOR_YELLOW="\[$(tput setaf 3)\]"
+    local COLOR_BLUE="\[$(tput setaf 4)\]"
+	local COLOOR_MAGENTA="\[$(tput setaf 5)\]"
+	local COLOR_CYAN="\[$(tput setaf 6)\]"
+	local COLOR_WHITE="\[$(tput setaf 7)\]"
+	local COLOR_RESET="\[$(tput sgr0)\]"
 	
+	# Append bulk of prompt
 	PS1+="${COLOR_RESET}${COLOR_YELLOW}\W${COLOR_RESET}${COLOR_BLUE}$(__git_ps1 ' (%s)'${COLOR_RESET})"
 	
 	# Add the prompt symbol
