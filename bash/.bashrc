@@ -15,11 +15,6 @@ export PATH
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-# Enable colorized output
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ls='ls --color=auto'
-
 # Prompt
 # -----------------------------------------------------------------------------
 
@@ -46,7 +41,7 @@ __prompt_command() {
 	local COLOR_RED="\[$(tput setaf 1)\]"
 	local COLOR_GREEN="\[$(tput setaf 2)\]"
 	local COLOR_YELLOW="\[$(tput setaf 3)\]"
-    local COLOR_BLUE="\[$(tput setaf 4)\]"
+        local COLOR_BLUE="\[$(tput setaf 4)\]"
 	local COLOOR_MAGENTA="\[$(tput setaf 5)\]"
 	local COLOR_CYAN="\[$(tput setaf 6)\]"
 	local COLOR_WHITE="\[$(tput setaf 7)\]"
@@ -75,3 +70,18 @@ alias reload='source $HOME/.bashrc'    # For an easier time sourcing this file
 alias cls='clear'                      # Makes clearing the screen less annoying
 alias sudo='sudo '                     # Enable sudoing for aliases
 alias __=sudo                          # Make using sudo less annoying
+alias lal="ls -la"
+alias lsd="ls -lF | grep --color=never '^d'"
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Enable colorized output
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
