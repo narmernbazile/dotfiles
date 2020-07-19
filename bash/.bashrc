@@ -19,7 +19,7 @@ export PATH
 # -----------------------------------------------------------------------------
 
 # Settings for git prompt
-source ./.config/bash/git-prompt.sh
+source $HOME/.config/bash/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
