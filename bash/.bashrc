@@ -12,6 +12,8 @@ then
 fi
 export PATH
 
+export JAVA_HOME="/usr/lib/jvm/java-14-openjdk-14.0.1.7-2.rolling.fc32.x86_64"
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
