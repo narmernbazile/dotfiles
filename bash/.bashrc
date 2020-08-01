@@ -54,7 +54,7 @@ __prompt_command() {
 	
 	# Add the prompt symbol
 	if [ $EXIT != 0 ]; then
-		# If the last command had a nonzero exit code, make the symbol red
+	# If the last command had a nonzero exit code, make the symbol red
         PS1+="${COLOR_RED} ${PROMPT_SYMBOL} ${COLOR_RESET}"
         tput bel
     else
