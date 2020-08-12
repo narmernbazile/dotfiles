@@ -5,7 +5,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific environment
+# Environment Variables
+# -----------------------------------------------------------------------------
+
+# PATH
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
@@ -13,6 +16,8 @@ fi
 export PATH
 
 export JAVA_HOME="/usr/lib/jvm/java-14-openjdk-14.0.1.7-2.rolling.fc32.x86_64"
+# export EDITOR='emacsclient -t'
+# export VISUAL='emacsclient -t'
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
