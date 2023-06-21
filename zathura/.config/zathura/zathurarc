@@ -1,0 +1,4 @@
+map j navigate forward
+map k navigate backward
+map J scroll down
+map k scroll up
