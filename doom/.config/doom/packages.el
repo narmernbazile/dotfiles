@@ -50,5 +50,7 @@
 ;(unpin! t)
 
 (unpin! org-roam)
+(unpin! evil-collection)
 (package! org-roam-ui)
 (package! nov)
+;; (unpin! mu4e)

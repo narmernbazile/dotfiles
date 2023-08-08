@@ -29,13 +29,12 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 12 :weight 'semi-light)
-    doom-variable-pitch-font (font-spec :family "Segoe UI" :size 13))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 12 :weight 'semi-light))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -77,6 +76,7 @@
 ;; ----------------------------------------------------------------------------------------------
 
 ;; general configuration
+(setq default-directory (concat (getenv "HOME") "/"))
 
 ;; make popup windows split vertically if there is enough room
 ;; (setq split-height-threshold nil)
@@ -141,6 +141,9 @@
 
 (when (eq system-type 'gnu/linux)
   (setq org-roam-directory "~/usr/nts"))
+
+(when (eq system-type 'darwin)
+  (setq org-roam-directory "/Users/nbazile/usr/Dropbox/nts"))
 
 (use-package! org-roam
   :config
@@ -211,3 +214,96 @@
   )
 
 (setq markdown-gfm-additional-languages '("r"))
+
+(use-package! mu4e
+  ;; :ensure nil
+  :load-path "/opt/homebrew/Cellar/mu/1.10.5/share/emacs/site-lisp/mu/mu4e"
+  ;; :defer 20 ; Wait until 20 seconds after startup
+  :config
+
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
+
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-maildir "~/mail/")
+  (setq message-send-mail-function 'smtpmail-send-it)
+
+  ;; Make sure plain text mails flow correctly for recipients
+  (setq mu4e-compose-format-flowed t)
+
+  (setq mu4e-html2text-command 'mu4e-shr2text)
+
+  ;; (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
+  ;; (setq mu4e-drafts-folder "/[Gmail]/Drafts")
+  ;; (setq mu4e-refile-folder "/[Gmail]/All Mail")
+  ;; (setq mu4e-trash-folder  "/[Gmail]/Trash")
+  ;; (setq mu4e-compose-signature "Best,\nNarmer")
+
+  (setq mu4e-contexts
+        (list
+        (make-mu4e-context
+        :name "gmail"
+        :match-func
+        (lambda (msg)
+        (when msg
+                (string-prefix-p "/gmail" (mu4e-message-field msg :maildir))))
+        :vars '((user-mail-address      . "narmernbazile@gmail.com")
+                (user-full-name         . "Narmer Noir Bazile")
+                (smtpmail-smtp-server   . "smtp.gmail.com")
+                (smtpmail-smtp-service  . 465)
+                (smtpmail-stream-type   . ssl)
+                (mu4e-drafts-folder     . "/gmail/[Gmail]/Drafts")
+                (mu4e-sent-folder       . "/gmail/[Gmail]/Sent Mail")
+                (mu4e-refile-folder     . "/gmail/[Gmail]/All Mail")
+                (mu4e-trash-folder      . "/gmail/[Gmail]/Trash")
+                (mu4e-compose-signature . "Best,\nNarmer")
+                (mu4e-maildir-shortcuts . (("/gmail/INBOX"             . ?i)
+                                            ("/gmail/[Gmail]/Sent Mail" . ?s)
+                                            ("/gmail/[Gmail]/Trash"     . ?t)
+                                            ("/gmail/[Gmail]/Drafts"    . ?d)
+                                            ("/gmail/[Gmail]/All Mail"  . ?a)))))
+
+       (make-mu4e-context
+        :name "bowdoin"
+        :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/bowdoin" (mu4e-message-field msg :maildir))))
+        :vars '((user-mail-address      . "nbazile@bowdoin.edu")
+                (user-full-name         . "Narmer Bazile")
+                (smtpmail-smtp-server   . "localhost")
+                (smtpmail-smtp-service  . 1025)
+                (smtpmail-stream-type   . plain)
+                (mu4e-drafts-folder     . "/bowdoin/Drafts")
+                (mu4e-sent-folder       . "/bowdoin/Sent")
+                (mu4e-refile-folder     . "/bowdoin/Archive")
+                (mu4e-trash-folder      . "/bowdoin/Trash")
+                (mu4e-compose-signature . "Best,\nNarmer")
+                (mu4e-maildir-shortcuts . (("/bowdoin/INBOX"   . ?i)
+                                            ("/bowdoin/Sent"    . ?s)
+                                            ("/bowdoin/Trash"   . ?t)
+                                            ("/bowdoin/Drafts"  . ?d)
+                                            ("/bowdoin/Archive" . ?a)))))))
+
+  (set-popup-rule! "mu4e-article" :side 'right :size '0.5))
+
+   ;; (setq mu4e-maildir-shortcuts
+   ;;    '(("/gmail/INBOX"             . ?i)
+   ;;      ("/gmail/[Gmail]/Sent Mail" . ?s)
+   ;;      ("/gmail/[Gmail]/Trash"     . ?t)
+   ;;      ("/gmail/[Gmail]/Drafts"    . ?d)
+   ;;      ("/gmail/[Gmail]/All Mail"  . ?a))))
+
+(use-package! citar
+  :custom
+  (citar-bibliography '("~/biblio/library.bib"))
+  :hook
+  (LaTeX-mode . citar-capf-setup)
+  (org-mode . citar-capf-setup))
+
+;; (use-package! citar-embark
+;;   :after citar embark
+;;   :no-require
+;;   :config (citar-embark-mode))
