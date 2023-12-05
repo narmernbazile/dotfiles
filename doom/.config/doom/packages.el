@@ -53,4 +53,5 @@
 (unpin! evil-collection)
 (package! org-roam-ui)
 (package! nov)
+(package! almost-mono-themes)
 ;; (unpin! mu4e)

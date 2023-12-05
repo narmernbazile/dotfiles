@@ -1,2 +1,4 @@
 *.ini
 /emacs
+.DS_Store
+doom/.config/doom/custom.el
