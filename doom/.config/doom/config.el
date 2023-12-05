@@ -181,7 +181,7 @@
          :desc "Previous page" "k" 'nov-previous-document)))
 
 (add-to-list 'default-frame-alist '(undecorated-round . t))
-;; use latex-preview-pane
+;;use latex-preview-pane
 ;; (after! latex
 ;;   (setq +latex-viewers '(pdf-tools)))
 
@@ -219,12 +219,14 @@
 
 (setq markdown-gfm-additional-languages '("r"))
 
+(after! org-roam
+  (setq org-roam-directory "~/usr/nts"))
+
 ;; (use-package! mu4e
 ;;   ;; :ensure nil
 ;;   ;; :load-path "/opt/homebrew/Cellar/mu/1.10.5/share/emacs/site-lisp/mu/mu4e"
 ;;   ;; :defer 20 ; Wait until 20 seconds after startup
 ;;   :config
-
 ;;   ;; This is set to 't' to avoid mail syncing issues when using mbsync
 ;;   (setq mu4e-change-filenames-when-moving t)
 
@@ -311,10 +313,3 @@
 ;;   :after citar embark
 ;;   :no-require
 ;;   :config (citar-embark-mode))
-
-(use-package! almost-mono-themes
-  :config
-  ;; (load-theme 'almost-mono-black t)
-  ;; (load-theme 'almost-mono-gray t)
-  ;; (load-theme 'almost-mono-cream t)
-  (load-theme 'almost-mono-white t))

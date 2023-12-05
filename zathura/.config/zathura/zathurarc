@@ -1,4 +1,8 @@
+# set highlight-active-color "#ffffff"
+set highlight-transparency 0.10
 map j navigate forward
 map k navigate backward
 map J scroll down
 map k scroll up
+map D set "first-page-column 1:1"
+map <C-d> set "first-page-column 1:2"
